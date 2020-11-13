@@ -9,6 +9,7 @@ public class TipoQuarto {
 	private Long id;
 	private String descricao;
 	private double	valor;
+	
 	public Long getId() {
 		return id;
 	}

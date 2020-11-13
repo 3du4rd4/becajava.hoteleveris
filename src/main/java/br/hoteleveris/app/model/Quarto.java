@@ -21,9 +21,6 @@ public class Quarto {
     @ManyToOne
     @JoinColumn(name = "ocupacaoId")
     private Ocupacao ocupacaoId;
-	
-	@ManyToMany(mappedBy = "quarto")
-    Set<Comodidade> comododidade;
 
 	public Long getId() {
 		return id;
@@ -72,16 +69,8 @@ public class Quarto {
 	public void setOcupacaoId(Ocupacao ocupacaoId) {
 		this.ocupacaoId = ocupacaoId;
 	}
+	
+    
 
-	public Set<Comodidade> getComododidade() {
-		return comododidade;
-	}
-
-	public void setComododidade(Set<Comodidade> comododidade) {
-		this.comododidade = comododidade;
-	}
-	
-	
-	
 	
 }

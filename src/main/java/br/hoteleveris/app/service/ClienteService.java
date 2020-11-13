@@ -1,11 +1,14 @@
 package br.hoteleveris.app.service;
 
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 import br.hoteleveris.app.model.Cliente;
 import br.hoteleveris.app.repository.ClienteRepository;
 import br.hoteleveris.app.request.ClienteRequest;
 import br.hoteleveris.app.response.BaseResponse;
+import br.hoteleveris.app.response.ClienteResponse;
 
 @Service
 public class ClienteService {
@@ -48,5 +51,28 @@ public class ClienteService {
 		return base;				
 				
 	}
+	
+	//obter
+	public ClienteResponse obter(Long id) {
+		
+		Optional<Cliente> listaCliente = _repository.findById(id);
+		ClienteResponse response = new ClienteResponse();
+			
+		if (id == null) {
+			response.Message = "Cliente não localizado!";
+			response.StatusCode = 404;
+			return response;
+		}
+		
+		response.setId(listaCliente.get().getId());
+		response.setNome(listaCliente.get().getNome());
+		response.setCpf(listaCliente.get().getCpf());
+		
+		response.Message = "Cliente obtido com sucesso!";
+		response.StatusCode = 200;
+		return response;
+	
+	}
+	
 
 }
