@@ -9,6 +9,7 @@ public class Quarto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(unique = true)
 	private int noQuarto;
 	private int andar;
 	private String situacao;

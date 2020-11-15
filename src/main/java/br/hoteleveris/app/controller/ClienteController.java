@@ -1,5 +1,9 @@
 package br.hoteleveris.app.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.hoteleveris.app.model.Cliente;
 import br.hoteleveris.app.request.ClienteRequest;
 import br.hoteleveris.app.response.BaseResponse;
 import br.hoteleveris.app.response.ClienteResponse;
@@ -16,7 +21,7 @@ import br.hoteleveris.app.service.ClienteService;
 
 @RestController
 @RequestMapping("/clientes")
-public class ClienteController extends BaseController {
+public class ClienteController {
 	final ClienteService _service;
 	
 	@Autowired
@@ -25,27 +30,28 @@ public class ClienteController extends BaseController {
 	}
 	
 	@PostMapping
-	public ResponseEntity inserir(@RequestBody ClienteRequest clienteRequest) {
+	public ResponseEntity inserir(@RequestBody ClienteRequest request) {
 		
 		try {
-			BaseResponse response = _service.inserir(clienteRequest);
-			return ResponseEntity.status(response.StatusCode).body(response);
+			BaseResponse response = _service.inserir(request);
+			return ResponseEntity.status(response.getStatusCode()).body(response);
 		} catch (Exception e){
-			return ResponseEntity.status(errorBase.StatusCode).body(errorBase);
+			return ResponseEntity.status(500).body("Erro do servidor!");
 			
 		}
 	}	
 	
 	@GetMapping(path = "/{id}")
 	public ResponseEntity obter(@PathVariable Long id) {
-		try {
-			ClienteResponse response = _service.obter(id);	
-			return ResponseEntity.status(response.StatusCode).body(response);
-		}catch (Exception e) {
-			return ResponseEntity.status(errorBase.StatusCode).body(errorBase);
+		
+		List<ClienteResponse> listaCliente = new ArrayList<ClienteResponse>();
+		
+			ClienteResponse cliente = _service.obter(id);
+			
+			return ResponseEntity.status(200).body(cliente);
 			
 		}
 		
 		
 	}
-}
+

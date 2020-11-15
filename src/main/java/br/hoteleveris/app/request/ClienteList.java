@@ -5,8 +5,9 @@ import java.util.List;
 import br.hoteleveris.app.response.BaseResponse;
 import br.hoteleveris.app.response.ClienteResponse;
 
-public class ClienteList extends BaseResponse{
+public class ClienteList {
 
+	
 	private List<ClienteResponse> Clientes;
 	
 	public List<ClienteResponse> getClientes() {

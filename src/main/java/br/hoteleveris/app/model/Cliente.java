@@ -10,6 +10,22 @@ public class Cliente {
 	private String cpf;
 	private String hash;
 	
+	public Cliente () {
+		
+	}
+	
+	public Cliente(Long id) {
+		super();
+		this.id = id;
+	}	
+		
+	public Cliente(String nome, String cpf, String hash) {
+		super();
+		this.nome = nome;
+		this.cpf = cpf;
+		this.hash = hash;
+	}
+
 	public Long getId() {
 		return id;
 	}
