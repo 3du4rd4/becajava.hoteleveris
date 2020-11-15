@@ -23,35 +23,37 @@ import br.hoteleveris.app.service.ClienteService;
 @RequestMapping("/clientes")
 public class ClienteController {
 	final ClienteService _service;
-	
+
 	@Autowired
 	public ClienteController(ClienteService service) {
 		_service = service;
 	}
-	
+
 	@PostMapping
 	public ResponseEntity inserir(@RequestBody ClienteRequest request) {
-		
+
 		try {
 			BaseResponse response = _service.inserir(request);
 			return ResponseEntity.status(response.getStatusCode()).body(response);
-		} catch (Exception e){
+		} catch (Exception e) {
 			return ResponseEntity.status(500).body("Erro do servidor!");
-			
+
 		}
-	}	
-	
-	@GetMapping(path = "/{id}")
-	public ResponseEntity obter(@PathVariable Long id) {
-		
-		List<ClienteResponse> listaCliente = new ArrayList<ClienteResponse>();
-		
-			ClienteResponse cliente = _service.obter(id);
-			
-			return ResponseEntity.status(200).body(cliente);
-			
-		}
-		
-		
 	}
 
+	@GetMapping(path = "/{id}")
+	public ResponseEntity obter(@PathVariable Long id) {
+
+		List<ClienteResponse> listaCliente = new ArrayList<ClienteResponse>();
+		try {
+			ClienteResponse cliente = _service.obter(id);
+
+			return ResponseEntity.status(200).body(cliente);
+
+		} catch (Exception e) {
+			return ResponseEntity.status(500).body("Cliente não cadastrado!");
+
+		}
+
+	}
+}

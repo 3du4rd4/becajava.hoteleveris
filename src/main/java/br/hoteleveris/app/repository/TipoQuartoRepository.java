@@ -8,5 +8,5 @@ import br.hoteleveris.app.model.TipoQuarto;
 
 public interface TipoQuartoRepository extends JpaRepository<TipoQuarto, Long>{
 	Optional<TipoQuarto> findById(Long Id);
-	
+		
 }

@@ -2,6 +2,7 @@ package br.hoteleveris.app.service;
 
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import br.hoteleveris.app.model.Cliente;
 import br.hoteleveris.app.repository.ClienteRepository;
@@ -11,12 +12,10 @@ import br.hoteleveris.app.response.ClienteResponse;
 
 @Service
 public class ClienteService {
+	
+	@Autowired
+	private ClienteRepository _repository;
 
-	final ClienteRepository _repository;
-
-	private ClienteService(ClienteRepository repository) {
-		_repository = repository;
-	}
 
 	public BaseResponse inserir(ClienteRequest request) {
 
@@ -39,7 +38,7 @@ public class ClienteService {
 	public ClienteResponse obter(Long id) {
 		ClienteResponse response = new ClienteResponse();
 
-		if (id == 0) {
+		if (id == null) {
 
 			return new ClienteResponse(404, "Cliente não localizado!");
 		}
