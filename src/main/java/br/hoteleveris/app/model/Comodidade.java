@@ -10,6 +10,19 @@ public class Comodidade {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
+	
+	public Comodidade() {
+		
+	}
+	
+	public Comodidade(Long id) {
+		this.id = id;
+	}	
+	
+	public Comodidade(String nome) {
+		this.nome = nome;
+	}
+
 	public Long getId() {
 		return id;
 	}

@@ -21,7 +21,7 @@ import br.hoteleveris.app.service.ClienteService;
 
 @RestController
 @RequestMapping("/clientes")
-public class ClienteController {
+public class ClienteController extends BaseController {
 	final ClienteService _service;
 
 	@Autowired
@@ -36,7 +36,7 @@ public class ClienteController {
 			BaseResponse response = _service.inserir(request);
 			return ResponseEntity.status(response.getStatusCode()).body(response);
 		} catch (Exception e) {
-			return ResponseEntity.status(500).body("Erro do servidor!");
+			return ResponseEntity.status(errorBase.getStatusCode()).body(errorBase);
 
 		}
 	}
@@ -51,7 +51,7 @@ public class ClienteController {
 			return ResponseEntity.status(200).body(cliente);
 
 		} catch (Exception e) {
-			return ResponseEntity.status(500).body("Cliente não cadastrado!");
+			return ResponseEntity.status(errorBase.getStatusCode()).body(errorBase);
 
 		}
 

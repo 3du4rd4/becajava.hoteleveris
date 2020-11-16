@@ -24,7 +24,7 @@ import br.hoteleveris.app.service.TipoQuartoService;
 
 @RestController
 @RequestMapping("/tipoQuartos")
-public class TipoQuartoController {
+public class TipoQuartoController extends BaseController{
 	@Autowired
 	private TipoQuartoService _service;
 
@@ -37,7 +37,7 @@ public class TipoQuartoController {
 			BaseResponse response = _service.inserir(request);
 			return ResponseEntity.status(response.getStatusCode()).body(response);
 		} catch (Exception e) {
-			return ResponseEntity.status(500).body("Erro do servidor!");
+			return ResponseEntity.status(errorBase.getStatusCode()).body(errorBase);
 
 		}
 
@@ -62,7 +62,7 @@ public class TipoQuartoController {
 		return ResponseEntity.status(200).body(tipoQuarto);
 		
 	} catch (Exception e) {
-		return ResponseEntity.status(500).body("Lista não localizada!");			
+		return ResponseEntity.status(errorBase.getStatusCode()).body(errorBase);			
 	}
 
 	}
