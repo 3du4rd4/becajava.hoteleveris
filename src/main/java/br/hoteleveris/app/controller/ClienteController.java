@@ -22,12 +22,9 @@ import br.hoteleveris.app.service.ClienteService;
 @RestController
 @RequestMapping("/clientes")
 public class ClienteController extends BaseController {
-	final ClienteService _service;
-
+	
 	@Autowired
-	public ClienteController(ClienteService service) {
-		_service = service;
-	}
+	private ClienteService _service;
 
 	@PostMapping
 	public ResponseEntity inserir(@RequestBody ClienteRequest request) {
