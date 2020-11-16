@@ -13,15 +13,27 @@ public class Quarto {
 	private int noQuarto;
 	private int andar;
 	private String situacao;
-	
-	
+
 	@ManyToOne
-    @JoinColumn(name = "tipoQuartoId")
-    private TipoQuarto tipoQuartoId;
-    
-    @ManyToOne
-    @JoinColumn(name = "ocupacaoId")
-    private Ocupacao ocupacaoId;
+	@JoinColumn(name = "tipoQuartoId")
+	private TipoQuarto tipoQuarto;
+
+	public Quarto() {
+
+	}
+
+	public Quarto(Long id) {
+		super();
+		this.id = id;
+	}
+
+	public Quarto(int noQuarto, int andar, String situacao, TipoQuarto tipoQuarto) {
+		super();
+		this.noQuarto = noQuarto;
+		this.andar = andar;
+		this.situacao = situacao;
+		this.tipoQuarto = tipoQuarto;
+	}
 
 	public Long getId() {
 		return id;
@@ -55,23 +67,12 @@ public class Quarto {
 		this.situacao = situacao;
 	}
 
-	public TipoQuarto getTipoQuartoId() {
-		return tipoQuartoId;
+	public TipoQuarto getTipoQuarto() {
+		return tipoQuarto;
 	}
 
-	public void setTipoQuartoId(TipoQuarto tipoQuartoId) {
-		this.tipoQuartoId = tipoQuartoId;
+	public void setTipoQuarto(TipoQuarto tipoQuarto) {
+		this.tipoQuarto = tipoQuarto;
 	}
 
-	public Ocupacao getOcupacaoId() {
-		return ocupacaoId;
-	}
-
-	public void setOcupacaoId(Ocupacao ocupacaoId) {
-		this.ocupacaoId = ocupacaoId;
-	}
-	
-    
-
-	
 }

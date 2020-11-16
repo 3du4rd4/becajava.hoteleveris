@@ -11,11 +11,32 @@ public class Ocupacao {
 	private Long id;
 	private Date data;
 	private int qtDiarias;
-	private String situacao;
-	
+	private String situacao = "N";
+		
 	@ManyToOne
 	@JoinColumn(name = "clienteId")
-	private Cliente clienteId;
+	private Cliente cliente;
+	
+	@ManyToOne
+	@JoinColumn(name = "quartoId")
+	private Quarto quarto;
+
+	public Ocupacao() {
+	}
+
+	public Ocupacao(Long id) {
+		super();
+		this.id = id;
+	}
+
+	public Ocupacao(Date data, int qtDiarias, String situacao, Cliente cliente, Quarto quarto) {
+		super();
+		this.data = data;
+		this.qtDiarias = qtDiarias;
+		this.situacao = situacao;
+		this.cliente = cliente;
+		this.quarto = quarto;
+	}
 
 	public Long getId() {
 		return id;
@@ -49,14 +70,20 @@ public class Ocupacao {
 		this.situacao = situacao;
 	}
 
-	public Cliente getClienteId() {
-		return clienteId;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setClienteId(Cliente clienteId) {
-		this.clienteId = clienteId;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
-	
 
+	public Quarto getQuarto() {
+		return quarto;
+	}
+
+	public void setQuarto(Quarto quarto) {
+		this.quarto = quarto;
+	}
 
 }
