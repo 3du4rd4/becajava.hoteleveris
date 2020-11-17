@@ -1,5 +1,6 @@
 package br.hoteleveris.app.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,5 +10,7 @@ import br.hoteleveris.app.model.Ocupacao;
 @Repository
 public interface OcupacaoRepository extends JpaRepository<Ocupacao, Long>{
 
-//	Optional<Ocupacao> findByAll();
+	List<Ocupacao> findBySituacao(String string);
+
+
 }

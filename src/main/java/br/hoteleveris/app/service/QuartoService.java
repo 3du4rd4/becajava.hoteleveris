@@ -18,6 +18,7 @@ import br.hoteleveris.app.request.ClienteList;
 import br.hoteleveris.app.request.ComodidadeRequest;
 import br.hoteleveris.app.request.QuartoList;
 import br.hoteleveris.app.request.QuartoRequest;
+import br.hoteleveris.app.request.SituacaoRequest;
 import br.hoteleveris.app.response.BaseResponse;
 import br.hoteleveris.app.response.QuartoResponse;
 
@@ -110,4 +111,5 @@ public class QuartoService {
 		return response;
 	}
 
+	
 }
