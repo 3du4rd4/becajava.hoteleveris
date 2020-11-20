@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import br.hoteleveris.app.model.Cliente;
+import br.hoteleveris.app.request.ClienteList;
 import br.hoteleveris.app.request.ClienteRequest;
 import br.hoteleveris.app.response.BaseResponse;
 import br.hoteleveris.app.response.ClienteResponse;
@@ -50,18 +52,7 @@ public class ClienteTesteImp {
 		BaseResponse response = service.inserir(request);
 		Assertions.assertEquals(400,response.getStatusCode());
 	}
-	
-	@Test
-	public void criarSemHash(){
-		ClienteRequest request = new ClienteRequest();
-		request.setNome("José");
-		request.setCpf("12345678");
-
 		
-		BaseResponse response = service.inserir(request);
-		Assertions.assertEquals(400,response.getStatusCode());
-	}
-	
 	@Test
 	public void criarNomeNulo(){
 		ClienteRequest request = new ClienteRequest();
@@ -85,18 +76,7 @@ public class ClienteTesteImp {
 		BaseResponse response = service.inserir(request);
 		Assertions.assertEquals(400,response.getStatusCode());
 	}
-	
-	@Test
-	public void criarHashNulo(){
-		ClienteRequest request = new ClienteRequest();
-		request.setNome("José");
-		request.setCpf("12345678");
-		request.setHash(null);
 		
-		BaseResponse response = service.inserir(request);
-		Assertions.assertEquals(400,response.getStatusCode());
-	}
-	
 	@Test
 	public void obterIdMenorQueZero() {
 		ClienteResponse response = service.obter(new Long(-5));
@@ -105,27 +85,22 @@ public class ClienteTesteImp {
 	}
 	
 	@Test
-	public void obterPorIdZero() {
-		BaseResponse response = service.obter(0l);
-		Assertions.assertEquals(404,response.getStatusCode());
-		Assertions.assertEquals("Cliente não encontrado", response.getMessage());
-	}
-	
-	
-	@Test
-	public void obterPorIdNaoExistente() {
-		BaseResponse response = service.obter(12121212111l);
-		Assertions.assertEquals(404,response.getStatusCode());
-		Assertions.assertEquals("Cliente não encontrado", response.getMessage());
-		
-	}
-	@Test
 	public void obter() {
 		Long id = 2L;
 		ClienteResponse response = service.obter(id);
 		Assertions.assertEquals(200, response.getStatusCode());
 		
 	}
+	
+	  @Test
+	    public void pegaLista() {
+	        ClienteList obj = new ClienteList();
+	        obj.setClientes(obj.getClientes());
+
+	        BaseResponse response = service.listar();
+	        Assertions.assertEquals(200, response.getStatusCode());
+	    }	  
+	  
 	@Test
 	public void obterIdInvalido() {
 		Long id = null;
@@ -134,5 +109,19 @@ public class ClienteTesteImp {
 		Assertions.assertEquals("Cliente não localizado!", response.getMessage());
 		
 	}
+	
+	@Test
+    void atualizar() {
+        Cliente cliente = new Cliente();
+        ClienteRequest request = new ClienteRequest();
+        cliente.setId(new Long(1));
+        request.setNome("Isa");
+        request.setCpf("123456789");
+        request.setHash(cliente.getHash());
 
+        BaseResponse response = service.atualizar(new Long(1),request);
+
+        Assertions.assertEquals(201, response.getStatusCode());
+        Assertions.assertEquals("Cliente atualizado com sucesso.", response.getMessage());
+    }
 }

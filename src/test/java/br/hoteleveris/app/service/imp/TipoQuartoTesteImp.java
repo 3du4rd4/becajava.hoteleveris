@@ -78,17 +78,6 @@ public class TipoQuartoTesteImp {
 	}
 
 	@Test
-	public void obterIdInexistente() {
-		Long id = 100000L;
-
-		TipoQuartoResponse response = service.obter(id);
-
-		Assertions.assertEquals(400, response.getStatusCode());
-		Assertions.assertEquals("Este quarto não existe!", response.getMessage());
-
-	}
-
-	@Test
 	public void pegarLista() {
 		TipoQuartoList obj = new TipoQuartoList();
 		obj.setTipoQuartos(obj.getTipoQuartos());

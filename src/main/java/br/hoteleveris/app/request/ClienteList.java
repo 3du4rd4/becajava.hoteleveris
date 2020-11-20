@@ -2,19 +2,20 @@ package br.hoteleveris.app.request;
 
 import java.util.List;
 
+import br.hoteleveris.app.model.Cliente;
 import br.hoteleveris.app.response.BaseResponse;
-import br.hoteleveris.app.response.ClienteResponse;
 
-public class ClienteList {
+public class ClienteList extends BaseResponse{
 
 	
-	private List<ClienteResponse> Clientes;
+	private List<Cliente> Clientes;
 	
-	public List<ClienteResponse> getClientes() {
+	public List<Cliente> getClientes() {
         return Clientes;
     }
 
-    public void setClientes(List<ClienteResponse> clientes) {
+    public void setClientes(List<Cliente> clientes) {
         Clientes = clientes;
     }
+  
 }

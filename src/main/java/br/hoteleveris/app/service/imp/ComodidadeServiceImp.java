@@ -1,5 +1,6 @@
 package br.hoteleveris.app.service.imp;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import br.hoteleveris.app.model.Comodidade;
 import br.hoteleveris.app.repository.ComodidadeRepository;
+import br.hoteleveris.app.request.ComodidadeList;
 import br.hoteleveris.app.request.ComodidadeRequest;
 import br.hoteleveris.app.response.BaseResponse;
 import br.hoteleveris.app.response.ComodidadeResponse;
@@ -48,5 +50,32 @@ public class ComodidadeServiceImp implements ComodidadeService{
 
 			return response;
 		}
+		
+		public ComodidadeList listar(){
+			List<Comodidade> lista = _repository.findAll();
+			ComodidadeList response = new ComodidadeList();
+			
+			response.setComdidades(lista);
+			response.setStatusCode(200);
+			response.setMessage("Comodidades Obtidas com sucesso!");
+			return response;
+		}
 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}

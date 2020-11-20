@@ -2,6 +2,7 @@ package br.hoteleveris.app.service;
 
 import org.springframework.stereotype.Service;
 
+import br.hoteleveris.app.request.ClienteList;
 import br.hoteleveris.app.request.ClienteRequest;
 import br.hoteleveris.app.response.BaseResponse;
 import br.hoteleveris.app.response.ClienteResponse;
@@ -12,4 +13,8 @@ public interface ClienteService {
 	BaseResponse inserir(ClienteRequest request);
 	
 	ClienteResponse obter(Long id); 
+	
+	ClienteList listar();
+
+	BaseResponse atualizar(Long id, ClienteRequest clienteRequest);
 }
