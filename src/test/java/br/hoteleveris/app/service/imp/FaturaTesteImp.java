@@ -1,4 +1,4 @@
-package br.hoteleveris.app.service;
+package br.hoteleveris.app.service.imp;
 
 
 import org.junit.jupiter.api.Assertions;
@@ -7,23 +7,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import br.hoteleveris.app.response.BaseResponse;
+import br.hoteleveris.app.service.FaturaService;
+
 
 @SpringBootTest
-public class FaturaTeste {
-
+public class FaturaTesteImp {
+	
 	@Autowired
 	private FaturaService service;
 	
 	@Test
-	 public void fazTransferenciaComDevedores() {
-		service.inserir();
-		BaseResponse response = new BaseResponse();
+	public void Transferencia() {
+	 service.inserir();
+	 BaseResponse response = new BaseResponse();
+		
 		Assertions.assertEquals(200,response.getStatusCode());
+		Assertions.assertEquals("Transferencia completa", response.getMessage());
+		
 	}
 	
-//	@Test
-//	 public void fazTransferenciaSemDevedores() {
-//		BaseResponse response = service.transferencia();
-//		Assertions.assertEquals(400,response.getStatusCode());
-//	}
 }

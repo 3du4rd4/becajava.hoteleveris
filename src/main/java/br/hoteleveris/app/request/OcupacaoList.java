@@ -2,17 +2,19 @@ package br.hoteleveris.app.request;
 
 import java.util.List;
 
-import br.hoteleveris.app.response.OcupacaoResponse;
+import br.hoteleveris.app.model.Ocupacao;
+import br.hoteleveris.app.response.BaseResponse;
 
-public class OcupacaoList {
 
-	private List<OcupacaoResponse> Ocupacoes;
+public class OcupacaoList extends BaseResponse{
 
-	public List<OcupacaoResponse> getOcupacoes() {
+	private List<Ocupacao> Ocupacoes;
+
+	public List<Ocupacao> getOcupacoes() {
 		return Ocupacoes;
 	}
 
-	public void setOcupacoes(List<OcupacaoResponse> ocupacoes) {
-		Ocupacoes = ocupacoes;
+	public void setOcupacoes(List<Ocupacao> lista) {
+		Ocupacoes = lista;
 	}
 }

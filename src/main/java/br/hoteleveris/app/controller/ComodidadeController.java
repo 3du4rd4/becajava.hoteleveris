@@ -1,7 +1,5 @@
 package br.hoteleveris.app.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +14,7 @@ import br.hoteleveris.app.request.ComodidadeRequest;
 import br.hoteleveris.app.response.BaseResponse;
 import br.hoteleveris.app.response.ComodidadeResponse;
 import br.hoteleveris.app.service.ComodidadeService;
+
 
 @RestController
 @RequestMapping("/comodidades")
@@ -37,7 +36,6 @@ public class ComodidadeController extends BaseController {
 		@GetMapping(path = "/{id}")
 		public ResponseEntity obter(@PathVariable Long id) {
 
-			List<ComodidadeResponse> listaCliente = new ArrayList<ComodidadeResponse>();
 			try {
 				ComodidadeResponse comodidade = _service.obter(id);
 

@@ -9,13 +9,13 @@ public class QuartoRequest {
 		private String situacao;
 		private Long tipoQuartoId;
 
-		private List<ComodidadeRequest> comodidades;
+		private List<ComodidadeIdRequest> comodidades;
 
-		public List<ComodidadeRequest> getComodidades() {
+		public List<ComodidadeIdRequest> getComodidades() {
 			return comodidades;
 		}
 
-		public void setComodidades(List<ComodidadeRequest> comodidades) {
+		public void setComodidades(List<ComodidadeIdRequest> comodidades) {
 			this.comodidades = comodidades;
 		}
 
